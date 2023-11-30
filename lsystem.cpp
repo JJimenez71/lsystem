@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "raylib.h"
+#include <emscripten/emscripten.h>
 
 struct LSystem{
     std::vector<char> vars; // Alphabet of LSystem
@@ -39,6 +40,16 @@ void create_generation(LSystem &ls, int n){
 }
 
 
+/*
+* Given a LSystem draw a tree 
+*/
+void draw_tree(LSystem &ls){
+    // Initialize Window
+    const int screenWidth = 800;
+    const int screenHeight = 450;
+    InitWindow(screenWidth, screenHeight, "LSystem Tree");
+}
+
 int main(){
     // Initialize our variables
     std::vector<char> v;
@@ -59,6 +70,7 @@ int main(){
     //m['0'] = "1[0]0";
 
     LSystem ls = {v, c, s, m};
-    create_generation(ls, 5);
+    //create_generation(ls, 5);
+    std::cout << "Hello World" << std::endl;
     return 0;
 }
