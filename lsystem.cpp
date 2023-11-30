@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <string>
 #include <vector>
+#include "raylib.h"
 
 struct LSystem{
     std::vector<char> vars; // Alphabet of LSystem
@@ -18,19 +19,22 @@ void create_generation(LSystem &ls, int n){
     //std::cout << "Starting Axiom: " + gen << std::endl;
     for(int i = 0; i < n; i++){
 
-        //std::cout << "Gen " + std::to_string(i) + ": " + gen << std::endl;
+        std::cout << "Gen " + std::to_string(i) + ": " + gen << std::endl;
         int pos = 0;
         do{
             char var = gen[pos];
+            //std::cout << gen[pos] << std::endl;
             if(ls.rules.find(var) != ls.rules.end()) {
                 // Insert our production rule
                 std::string val = ls.rules[var];
                 gen.replace(pos, 1, val);
                 pos += val.size();
+            }else{
+                pos += 1;
             }
         }while(pos < gen.size());
     }
-    //std::cout << "Final Axiom: " + gen << std::endl;
+    std::cout << "Final Axiom: " + gen << std::endl;
 
 }
 
@@ -38,19 +42,21 @@ void create_generation(LSystem &ls, int n){
 int main(){
     // Initialize our variables
     std::vector<char> v;
-    v.push_back('A');
-    v.push_back('B');
+    v.push_back('F');
+    //v.push_back('1');
 
     // Initialize our constants
     std::vector<char> c;
+    c.push_back('[');
+    c.push_back(']');
 
     // Initialize our axiom
-    std::string s = "A";
+    std::string s = "F";
 
     // Initialize our production rules
     std::unordered_map<char, std::string> m;
-    m['A'] = "AB";
-    m['B'] = "A";
+    m['F'] = "F+F−F−F+F";
+    //m['0'] = "1[0]0";
 
     LSystem ls = {v, c, s, m};
     create_generation(ls, 5);
