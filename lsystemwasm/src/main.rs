@@ -31,7 +31,7 @@ fn create_generation(ls: &LSystem, n: usize) {
     println!("Final Axiom: {}", gen);
 }
 
-fn run_lsystem() {
+pub fn run_lsystem() {
     let v = vec!['0', '1'];
 
     let c = vec!['[',']'];
