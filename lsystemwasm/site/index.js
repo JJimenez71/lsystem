@@ -1,3 +1,4 @@
 import * as wasm from "lsystemwasm";
 
-wasm.greet();
+// wasm.greet();
+wasm.create_lsystem();

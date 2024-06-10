@@ -6,7 +6,7 @@ struct LSystem {
     rules: HashMap<char, String>,
 }
 
-fn create_generation(ls: &LSystem, n: usize) {
+fn create_generation(ls: &LSystem, n: usize) -> String {
 
     let mut gen: String = String::from(&ls.axiom); // Starting string
 
@@ -29,9 +29,10 @@ fn create_generation(ls: &LSystem, n: usize) {
         i += 1;
     }
     println!("Final Axiom: {}", gen);
+    gen
 }
 
-pub fn run_lsystem() {
+pub fn run_lsystem() -> String {
     let v = vec!['0', '1'];
 
     let c = vec!['[',']'];
@@ -49,9 +50,11 @@ pub fn run_lsystem() {
         rules: m,
     };
 
-    create_generation(&ls, 2);
+    let gen = create_generation(&ls, 2);
+    gen
 }
 
 fn main() {
-    run_lsystem()
+    let gen = run_lsystem();
+    println!("Final Axiom: {gen}");
 }

@@ -1,5 +1,5 @@
 use wasm_bindgen::prelude::*;
-// mod main;
+mod main;
 
 #[wasm_bindgen]
 extern{
@@ -11,6 +11,8 @@ pub fn greet(){
     alert("Hello World!");
 }
 
-// pub fn create_lsystem(){
-//     main::run_lsystem();
-// }
+#[wasm_bindgen]
+pub fn create_lsystem(){
+    let axiom = main::run_lsystem();
+    alert(&axiom);
+}
